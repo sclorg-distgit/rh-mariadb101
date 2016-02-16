@@ -20,7 +20,7 @@
 Summary: Package that installs %{scl}
 Name: %{scl}
 Version: 2.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2+
 Group: Applications/File
 Source0: README
@@ -166,6 +166,9 @@ restorecon -R %{_localstatedir} >/dev/null 2>&1 || :
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Thu Feb 11 2016 Honza Horak <hhorak@redhat.com> - 2.2-2
+- Rebuild with newer scl-utils
+
 * Thu Jan 14 2016 Honza Horak <hhorak@redhat.com> - 2.2-1
 - Create meta package for MariaDB 10.1
 
