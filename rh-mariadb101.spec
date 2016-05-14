@@ -20,7 +20,7 @@
 Summary: Package that installs %{scl}
 Name: %{scl}
 Version: 2.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2+
 Group: Applications/File
 Source0: README
@@ -88,6 +88,7 @@ EOF
 chmod a+x h2m_helper
 # generate the man page
 help2man -N --section 7 ./h2m_helper -o %{?scl_name}.7
+sed -i "s|'|\\\\N'39'|g" %{?scl_name}.7
 
 %install
 %{?scl_install}
@@ -166,6 +167,10 @@ restorecon -R %{_localstatedir} >/dev/null 2>&1 || :
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Apr 19 2016 Jakub Dorňák <jdornak@redhat.com> - 2.2-3
+- Fixed syntax in man page
+  Resolves: #1219515
+
 * Thu Feb 11 2016 Honza Horak <hhorak@redhat.com> - 2.2-2
 - Rebuild with newer scl-utils
 
